@@ -41,7 +41,7 @@ if ($rezultat->num_rows == 0) {
 
         <div class="container">
             <h1 class="text-center" id="naslov">Books you currently have</h1>
-            <button class="btn btn-dark">Add new book</button>
+            <button class="btn btn-dark" style="margin-left: 2%;">Add new book</button>
         </div>
 
         <div id="pregled" class="panel panel-success" style="margin-top: 1%;">
@@ -82,22 +82,17 @@ if ($rezultat->num_rows == 0) {
 
                     </tbody>
                 </table>
-                <div class="row">
-                    <div class="col-md-1">
-                        <button id="btn-izmeni" class="btn btn-warning" data-toggle="modal" data-target="#izmeniModal">Izmeni</button>
 
-                    </div>
 
-                    <div class="col-md-12">
-                        <button id="btn-obrisi" class="btn btn-danger" style="background-color: red; border: 1px solid white;">Obrisi</button>
-                    </div>
 
-                    <div class="col-md-2">
-                        <button id="btn-sortiraj" class="btn btn-normal" onclick="sortTable()">Sortiraj</button>
-                    </div>
 
-                </div>
             </div>
+
+        </div>
+        <div class="buttons">
+            <button id="btn-izmeni" type="button" class="btn btn-warning" data-toggle="modal" data-target="#izmeniModal">Izmeni</button>
+            <button id="btn-obrisi" type="button" class="btn btn-danger">Obrisi</button>
+            <button id="btn-sortiraj" type="button" class="btn btn-secondary" onclick="sortTable()">Sortiraj</button>
         </div>
 
 
