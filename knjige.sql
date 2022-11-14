@@ -44,9 +44,9 @@ CREATE TABLE `prijave` (
 --
 
 INSERT INTO `prijave` (`id`, `naziv`, `autor`, `drzava`, `zanr`, `datum`) VALUES
-(1, 'The Hobbit', 'J. R. R. Tolkien', 'USA', '2022-11-15'),
-(5, 'Robinson Crusoe', 'Daniel Defo', 'FRA', '2022-10-10'),
-(6, 'Kad su cvetale tikve', 'Dragoslav Mihailović', 'SRB', '2022-10-1');
+(1, 'The Hobbit', 'J. R. R. Tolkien', 'USA', 'Fantasy', '2022-11-15'),
+(5, 'Robinson Crusoe', 'Daniel Defo', 'FRA', 'Adventure', '2022-10-10'),
+(6, 'Kad su cvetale tikve', 'Dragoslav Mihailović', 'SRB', 'Drama', '2022-10-1');
 
 -- --------------------------------------------------------
 

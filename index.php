@@ -1,11 +1,14 @@
 <?php
 
+require "dbBroker.php";
+require "model/user.php";
+
 session_start();
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $uname = $_POST['username'];
     $upass = $_POST['password'];
 
-    // $conn = new mysqli() /// pregazena konekcija iz dbBrokera;
+    //$conn = new mysqli(); /// pregazena konekcija iz dbBrokera;
     $korisnik = new User(1, $uname, $upass);
     // $odg = $korisnik->logInUser($uname, $upass, $conn);
     $odg = User::logInUser($korisnik, $conn); //pristup statickim funkcijama preko klase
@@ -48,18 +51,18 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     <h1 class="naslov">Welcome to the library of Magic!</h1>
 
-    <form>
+    <form method="POST" action="#">
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter username">
+            <label class="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
 
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" name="password" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
     </form>
 
 

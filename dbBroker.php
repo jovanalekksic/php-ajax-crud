@@ -6,8 +6,8 @@ $password = "";
 $port = "3307";  //na mom racunaru je ovaj port
 $database = "knjige";
 
-$connection = new mysqli($host, $user, $password, $database, $port);
+$conn = new mysqli($host, $user, $password, $database, $port);
 
-if ($connection->connect_errno) {
-    exit("Connection failed. Error: " . $connection->connect_error);
+if ($conn->connect_errno) {
+    exit("Connection failed. Error: " . $conn->connect_error);
 }
