@@ -1,7 +1,7 @@
 #naslov{
    
         color: white;
-        font-family: 'Garamond' ;
+        font-family: 'Baskerville Old Face' ;
         text-align: center;
         padding-top: 5%;
         font-size: 4em;
@@ -14,19 +14,21 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed; 
 }
-.panel{
+.card{
     background-color: #d7dcfd;
     opacity: 80%;
     width: 80%;
     margin-left: auto;
     margin-right: auto; 
 }
-.buttons{
+.buttons, .newbook{
     width: 80%;
+    padding-top: 1%;
     margin-left: auto;
     margin-right: auto; 
 }
-.panel-body{
+.card-body{
     color: black;
 }
+
 
