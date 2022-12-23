@@ -42,6 +42,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/book.png" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <title>Prijava</title>
@@ -53,16 +54,16 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     <form method="POST" action="#">
         <div class="form-group">
-            <label class="username">Username</label>
+            <label class="username">Korisničko ime</label>
             <input type="text" class="form-control" id="username" name="username" required>
 
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">Lozinka</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
 
-        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        <button type="submit" class="btn btn-primary" name="submit">Potvrdi</button>
     </form>
 
 
