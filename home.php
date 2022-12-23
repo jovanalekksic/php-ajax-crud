@@ -17,7 +17,7 @@ if (!$rezultat) {
 }
 
 if ($rezultat->num_rows == 0) {
-    echo "Nema prijava na kolokvijume";
+    echo "Nema zaduzenja u biblioteci";
     die();
 } else {
 
@@ -39,15 +39,28 @@ if ($rezultat->num_rows == 0) {
     </head>
 
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
+
+            <a class="navbar-brand" href="#">Zaduženja u biblioteci</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="./home.php">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="./clanovi_stranica.php">Clanovi</a>
+                    <a class="nav-item nav-link" href="./logout.php">Logout</a>
+
+                </div>
+            </div>
+
+        </nav>
 
 
 
-        <div class="container">
-            <h1 class="text-center" id="naslov">Vaša kolekcija</h1>
-        </div>
         <div class="newbook">
             <button id="btnAdd" class="btn btn-primary" data-toggle="modal" data-target="#modaladd">Dodaj novu knjigu</button>
-            <a class="nav-link" href="./logout.php">Logout</a>
+
         </div>
 
 
@@ -177,6 +190,30 @@ if ($rezultat->num_rows == 0) {
 
         <script src="js/main.js"></script>
 
+        <script>
+            function sortTable() {
+                var table, rows, switching, i, x, y, shouldSwitch;
+                table = document.getElementById("myTable");
+                switching = true;
+                while (switching) {
+                    switching = false;
+                    rows = table.rows;
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        shouldSwitch = false;
+                        x = rows[i].getElementsByTagName("TD")[1];
+                        y = rows[i + 1].getElementsByTagName("TD")[1];
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                    if (shouldSwitch) {
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                    }
+                }
+            }
+        </script>
 
     </body>
 

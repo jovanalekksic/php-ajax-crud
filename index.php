@@ -19,7 +19,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         console.log( "Uspešno ste se prijavili");
         </script>
         `;
-        $_SESSION['user_id'] = $korisnik->id;
+        $_SESSION['user_id'] = $korisnik->user_id;
         header('Location: home.php');
         exit();
     } else {
