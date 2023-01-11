@@ -22,7 +22,8 @@ class Prijava
 
     public static function getAll(mysqli $conn)
     {
-        $query = "SELECT * FROM prijave, clanovi";
+        $query = "SELECT p.prijava_id, p.naziv, p.autor, p.drzava, p.zanr, p.datum, p.idClana, c.ime,c.prezime 
+                  FROM prijave p JOIN clanovi c ON p.idClana=c.id"; //da se prikazu ime i prez i id
         return $conn->query($query);
     }
 
@@ -32,7 +33,7 @@ class Prijava
         $myArray = array();
         $rezultat = $conn->query($query);
         if ($rezultat) {
-            while ($red = $rezultat->fetch_array()) {
+            while ($red = $rezultat->fetch_array(1)) {
                 $myArray[] = $red;
             }
         }
@@ -59,9 +60,17 @@ class Prijava
         return $conn->query($q);
     }
 
-    public function update(mysqli $conn)
+    // public function update(mysqli $conn)
+    // {
+    //     $q = "UPDATE prijave set naziv ='$this->naziv', autor='$this->autor',drzava='$this->drzava',zanr='$this->zanr',datum='$this->datum',idClana='$this->idClana'";
+    //     return $conn->query($q);
+    // }
+    public static function izmeniPrijavu($naziv, $autor, $drzava, $zanr, $datum, $idClana, mysqli $conn)
     {
-        $q = "UPDATE prijave set naziv ='$this->naziv', autor='$this->autor',drzava='$this->drzava',zanr='$this->zanr',datum='$this->datum',idClana='$this->idClana'";
-        return $conn->query($q);
+
+        $query = "UPDATE prijave 
+                  SET naziv ='$naziv', autor='$autor', drzava='$drzava', zanr='$zanr', datum='$datum' 
+                  WHERE idClana = '$idClana' ";
+        return $conn->query($query);
     }
 }

@@ -103,6 +103,7 @@ if ($rezultat->num_rows == 0) {
                                     </label>
                                 </td>
 
+
                             </tr>
                     <?php
                         endwhile;
@@ -127,11 +128,11 @@ if ($rezultat->num_rows == 0) {
 
 
 
-
+        <!-- modal za dodavanje nove knjige -->
         <div class="modal fade" id="modaladd" role="dialog">
             <div class="modal-dialog">
 
-                <!--Sadrzaj Zakaži modala-->
+                <!--Sadrzaj -->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -170,7 +171,67 @@ if ($rezultat->num_rows == 0) {
                                             <input type="text" style="border: 1px solid black" name="idClana" class="form-control" />
                                         </div>
                                         <div class="form-group">
-                                            <button id="btnDodaj" type="submit" class="btn btn-success btn-block">Add</button>
+                                            <button id="btnDodaj" type="submit" class="btn btn-success btn-block">Dodaj</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- modal za menjanje -->
+        <div class="modal fade" id="izmeniModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!--Sadrzaj -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container prijava-form">
+                            <form action="#" method="POST" id="izmeniForm">
+                                <h3 style="color: black; text-align: center">Izmeni knjigu</h3>
+                                <div class="row">
+                                    <div class="col-md-11 ">
+                                        <div class="form-group">
+                                            <label for="">ID</label>
+                                            <input id="idm" type="text" style="border: 1px solid black" name="prijava_id" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Naziv</label>
+                                            <input id="nazivm" type="text" style="border: 1px solid black" name="naziv" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Autor</label>
+                                            <input id="autorm" type="text" style="border: 1px solid black" name="autor" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sala">Drzava</label>
+                                            <input id="drzavam" type="text" style="border: 1px solid black" name="drzava" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Zanr</label>
+                                            <input id="zanrm" type="text" style="border: 1px solid black" name="zanr" class="form-control" />
+                                        </div>
+                                        <div class="col-md-12">
+
+                                            <div class="form-group">
+                                                <label for="">Datum</label>
+                                                <input id="datumm" type="date" style="border: 1px solid black" name="datum" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Id clana</label>
+                                            <input id="idclanam" type="text" style="border: 1px solid black" name="idClana" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <button id="btnIzmeni" type="submit" class="btn btn-success btn-block">Dodaj</button>
                                         </div>
                                     </div>
                                 </div>
@@ -190,6 +251,7 @@ if ($rezultat->num_rows == 0) {
 
         <script src="js/main.js"></script>
 
+        <!--SORTIRANJE TABELE -->
         <script>
             function sortTable() {
                 var table, rows, switching, i, x, y, shouldSwitch;

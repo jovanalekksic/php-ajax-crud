@@ -1,3 +1,5 @@
+
+//BRISANJE IZ LISTE ZADUZENJA
 $("#btn-obrisi").click(function () {
     const checked = $("input[type=radio]:checked");
     console.log(checked);
@@ -20,6 +22,8 @@ $("#btn-obrisi").click(function () {
     });
 });
 
+
+//DODAVANJE NOVIH ZADUZENJA
 $('#btnDodaj').submit(function () {
     $("modaladd").modal("toggle");
     return false;
@@ -32,11 +36,7 @@ $("#dodajForm").submit(function () {
     const $inputs = $form.find("input, select, button");
     const serializedData = $form.serialize();
     console.log(serializedData);
-    let obj = $form.serializeArray().reduce(function (json, { name, value }) {
-        json[name] = value;
-        return json;
-    }, {});
-    console.log(obj);
+
     $inputs.prop("disabled", true);
 
     request = $.ajax({
@@ -47,7 +47,6 @@ $("#dodajForm").submit(function () {
 
     request.done(function (response, textStatus, jqXHR) {
         if (response === "Success") {
-            appandRow(obj);
             alert("Knjiga je dodata");
             location.reload(true);
         } else console.log("Knjiga nije dodata " + response);
@@ -59,38 +58,11 @@ $("#dodajForm").submit(function () {
     });
 });
 
-function appandRow(obj) {
-    console.log(obj);
-
-    $.get("handler/getLastElement.php", function (data) {
-        console.log(data);
-        console.log($("#myTable tbody tr:last").get());
-        $("#myTable tbody").append(`
-        <tr>
-            
-            <td>${obj.naziv}</td>
-            <td>${obj.autor}</td>
-            <td>${obj.drzava}</td>
-            <td>${obj.zanr}</td>
-            <td>${obj.datum}</td>
-            <td>${obj.idClana}</td>
-            <td>${obj.ime}</td>
-            <td>${obj.prezime}</td>
-            <td>
-                <label class="custom-radio-btn">
-                    <input type="radio" name="checked-donut">
-                    <span class="checkmark"></span>
-                </label>
-            </td>
-        </tr>
-      `);
-    });
-}
 
 //Dodavanje clana u bazu
 
 $('#btnDodajClana').submit(function () {
-    $("modalDodajClana").modal("toggle");
+    $("modaladd").modal("toggle");
     return false;
 });
 $("#dodajClanaForm").submit(function () {
@@ -100,11 +72,7 @@ $("#dodajClanaForm").submit(function () {
     const $inputs = $form.find("input, select, button");
     const serializedData = $form.serialize();
     console.log(serializedData);
-    let obj = $form.serializeArray().reduce(function (json, { name, value }) {
-        json[name] = value;
-        return json;
-    }, {});
-    console.log(obj);
+
     $inputs.prop("disabled", true);
 
     request = $.ajax({
@@ -115,7 +83,6 @@ $("#dodajClanaForm").submit(function () {
 
     request.done(function (response, textStatus, jqXHR) {
         if (response === "Success") {
-            appandRowClan(obj);
             alert("Clan je dodat");
             location.reload(true);
         } else console.log("Clan nije dodat " + response);
@@ -127,31 +94,7 @@ $("#dodajClanaForm").submit(function () {
     });
 });
 
-function appandRowClan(obj) {
-    console.log(obj);
 
-    $.get("handler/getLastElementClan.php", function (data) {
-        console.log(data);
-        console.log($("#myTable tbody tr:last").get());
-        $("#myTable tbody").append(`
-        <tr>
-            
-            <td>${obj.ime}</td>
-            <td>${obj.prezime}</td>
-            <td>${obj.email}</td>
-            <td>${obj.telefon}</td>
-            <td>${obj.adresa}</td>
-            
-            <td>
-                <label class="custom-radio-btn">
-                    <input type="radio" name="checked-donut">
-                    <span class="checkmark"></span>
-                </label>
-            </td>
-        </tr>
-      `);
-    });
-}
 
 //Brisanje clana iz baze
 $("#btn-obrisi-clana").click(function () {
@@ -175,3 +118,87 @@ $("#btn-obrisi-clana").click(function () {
         }
     });
 });
+
+//izmena 
+
+$('#btn-izmeni').submit(function () {
+    $("izmeniModal").modal("toggle");
+    return false;
+});
+
+$('#btn-izmeni').click(function () {
+
+    const checked = $('input[type=radio]:checked');
+
+    request = $.ajax({
+        url: 'handler/get.php',
+        type: 'post',
+        data: { 'prijava_id': checked.val() },
+        dataType: 'json'
+    });
+
+    request.done(function (response, textStatus, jqXHR) {
+        console.log('Popunjena');
+
+
+        $('#nazivm').val(response[0]['naziv'].trim());
+        console.log(response[0]['naziv'].trim());
+
+        $('#autorm').val(response[0]['autor'].trim());
+        console.log(response[0]['autor'].trim());
+        $('#drzavam').val(response[0]['drzava'].trim());
+        console.log(response[0]['drzava'].trim());
+        $('#zanrm').val(response[0]['zanr'].trim());
+        console.log(response[0]['zanr'].trim());
+        $('#datumm').val(response[0]['datum'].trim());
+        console.log(response[0]['datum'].trim());
+        $('#idclanam').val(response[0]['idClana'].trim());
+        console.log(response[0]['idClana'].trim());
+        $('#idm').val(checked.val());
+
+        console.log(response);
+    });
+
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error('The following error occurred: ' + textStatus, errorThrown);
+    });
+
+});
+
+$('#izmeniForm').submit(function () {
+    event.preventDefault();
+    console.log("Izmena");
+    const $form = $(this);
+    const $inputs = $form.find('input, select, button');
+    const serializedData = $form.serialize();
+    console.log(serializedData);
+    $inputs.prop('disabled', true);
+
+    request = $.ajax({
+        url: 'handler/update.php',
+        type: 'post',
+        data: serializedData
+    });
+
+    request.done(function (response, textStatus, jqXHR) {
+
+
+        if (response === 'Success') {
+            console.log('Prijava je izmenjena');
+            location.reload(true);
+            //$('#izmeniForm').reset;
+        }
+        else console.log('Prijava nije izmenjena ' + response);
+        console.log(response);
+    });
+
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error('The following error occurred: ' + textStatus, errorThrown);
+    });
+
+
+
+});
+
+
+
