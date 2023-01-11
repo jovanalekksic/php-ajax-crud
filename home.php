@@ -52,6 +52,7 @@ if ($rezultat->num_rows == 0) {
                     <a class="nav-item nav-link" href="./logout.php">Logout</a>
 
                 </div>
+
             </div>
 
         </nav>
@@ -60,7 +61,7 @@ if ($rezultat->num_rows == 0) {
 
         <div class="newbook">
             <button id="btnAdd" class="btn btn-primary" data-toggle="modal" data-target="#modaladd">Dodaj novu knjigu</button>
-
+            <input type="text" id="pretrazi" class="btn" placeholder="Search" onkeyup="pretrazi()" style="margin-left: 66%;">
         </div>
 
 
@@ -251,8 +252,38 @@ if ($rezultat->num_rows == 0) {
 
         <script src="js/main.js"></script>
 
-        <!--SORTIRANJE TABELE -->
+        <!--SORTIRANJE I PRETRAGA TABELE -->
         <script>
+            function pretrazi() {
+
+                var input, filter, table, tr, i, td1, td2, td3, td4, txtValue1, txtValue2, txtValue3, txtValue4;
+                input = document.getElementById("pretrazi");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+
+                for (i = 0; i < tr.length; i++) {
+                    td1 = tr[i].getElementsByTagName("td")[1];
+                    td2 = tr[i].getElementsByTagName("td")[2];
+                    td3 = tr[i].getElementsByTagName("td")[3];
+                    td4 = tr[i].getElementsByTagName("td")[4];
+
+                    if (td1 || td2 || td3 || td4) {
+                        txtValue1 = td1.textContent || td1.innerText;
+                        txtValue2 = td2.textContent || td2.innerText;
+                        txtValue3 = td3.textContent || td3.innerText;
+                        txtValue4 = td4.textContent || td4.innerText;
+
+                        if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 ||
+                            txtValue3.toUpperCase().indexOf(filter) > -1 || txtValue4.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+
             function sortTable() {
                 var table, rows, switching, i, x, y, shouldSwitch;
                 table = document.getElementById("myTable");
