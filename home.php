@@ -72,13 +72,13 @@ if ($rezultat->num_rows == 0) {
                 <table id="myTable" class="table table-hover">
                     <thead class="thead">
                         <tr>
-                            <th scope="col">Id</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Naziv</th>
                             <th scope="col">Autor</th>
-                            <th scope="col">Drzava</th>
-                            <th scope="col">Zanr</th>
+                            <th scope="col">Država</th>
+                            <th scope="col">Žanr</th>
                             <th scope="col">Datum zajma</th>
-                            <th scope="col">Id clana</th>
+                            <th scope="col">Id člana</th>
                             <th scope="col">Ime</th>
                             <th scope="col">Prezime</th>
                         </tr>
@@ -185,11 +185,9 @@ if ($rezultat->num_rows == 0) {
         </div>
 
 
-        <!-- modal za menjanje -->
+        <!-- modal za izmenu -->
         <div class="modal fade" id="izmeniModal" role="dialog">
             <div class="modal-dialog">
-
-                <!--Sadrzaj -->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>

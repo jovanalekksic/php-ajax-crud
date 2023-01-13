@@ -119,7 +119,7 @@ $("#btn-obrisi-clana").click(function () {
     });
 });
 
-//izmena 
+//Izmena prijave 
 
 $('#btn-izmeni').submit(function () {
     $("izmeniModal").modal("toggle");
@@ -138,9 +138,6 @@ $('#btn-izmeni').click(function () {
     });
 
     request.done(function (response, textStatus, jqXHR) {
-        console.log('Popunjena');
-
-
         $('#nazivm').val(response[0]['naziv'].trim());
         console.log(response[0]['naziv'].trim());
 
@@ -186,7 +183,6 @@ $('#izmeniForm').submit(function () {
         if (response === 'Success') {
             console.log('Prijava je izmenjena');
             location.reload(true);
-            //$('#izmeniForm').reset;
         }
         else console.log('Prijava nije izmenjena ' + response);
         console.log(response);
