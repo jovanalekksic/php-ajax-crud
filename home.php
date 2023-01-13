@@ -34,21 +34,21 @@ if ($rezultat->num_rows == 0) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
 
         <link rel="stylesheet" type="text/css" href="css/home.css">
-        <title>Kolekcija</title>
+        <title>Zaduženja</title>
 
     </head>
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
 
-            <a class="navbar-brand" href="#">Zaduženja u biblioteci</a>
+            <a class="navbar-brand" href="#">Biblioteka</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="./home.php">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link active" href="./clanovi_stranica.php">Clanovi</a>
+                    <a class="nav-item nav-link active" href="./home.php">Početna <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="./clanovi_stranica.php">Članovi</a>
                     <a class="nav-item nav-link" href="./logout.php">Logout</a>
 
                 </div>
@@ -61,7 +61,7 @@ if ($rezultat->num_rows == 0) {
 
         <div class="newbook">
             <button id="btnAdd" class="btn btn-primary" data-toggle="modal" data-target="#modaladd">Dodaj novu knjigu</button>
-            <input type="text" id="pretrazi" class="btn" placeholder="Search" onkeyup="pretrazi()" style="margin-left: 66%;">
+            <input type="text" id="pretrazi" class="btn" placeholder="Pretraži" onkeyup="pretrazi()" style="margin-left: 66%;">
         </div>
 
 
@@ -123,7 +123,7 @@ if ($rezultat->num_rows == 0) {
         </div>
         <div class="buttons">
             <button id="btn-izmeni" type="button" class="btn btn-warning" data-toggle="modal" data-target="#izmeniModal">Izmeni</button>
-            <button id="btn-obrisi" type="button" class="btn btn-danger">Obrisi</button>
+            <button id="btn-obrisi" type="button" class="btn btn-danger">Obriši</button>
             <button id="btn-sortiraj" type="button" class="btn btn-secondary" onclick="sortTable()">Sortiraj</button>
         </div>
 

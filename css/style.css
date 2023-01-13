@@ -15,7 +15,8 @@ form{
 
 .form-group label{
     color: azure;
-    font-family: 'Garamond' ;
+    font-family: 'Garamonde' ;
+    font-weight:100;
 }
 
 .form-group input{

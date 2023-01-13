@@ -31,21 +31,21 @@
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
 
             <link rel="stylesheet" type="text/css" href="css/home.css">
-            <title>Kolekcija</title>
+            <title>Članovi</title>
 
         </head>
 
         <body>
             <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
 
-                <a class="navbar-brand" href="#">Zaduženja u biblioteci</a>
+                <a class="navbar-brand" href="#">Biblioteka</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="./home.php">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link active" href="./clanovi_stranica.php">Clanovi</a>
+                        <a class="nav-item nav-link active" href="./home.php">Početna <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="./clanovi_stranica.php">Članovi</a>
                         <a class="nav-item nav-link" href="./logout.php">Logout</a>
 
                     </div>
@@ -57,7 +57,7 @@
 
             <div class="newbook">
                 <button id="btn-dodaj-clana" class="btn btn-primary" data-toggle="modal" data-target="#modalDodajClana">Dodaj člana</button>
-
+                <input type="text" id="pretrazi" class="btn" placeholder="Pretraži" onkeyup="pretrazi()" style="margin-left: 70%;">
             </div>
 
 
@@ -113,7 +113,7 @@
 
             </div>
             <div class="buttons">
-                <button id="btn-obrisi-clana" type="button" class="btn btn-danger">Obrisi</button>
+                <button id="btn-obrisi-clana" type="button" class="btn btn-danger">Obriši</button>
 
             </div>
 
@@ -175,7 +175,37 @@
 
 
             <script src="js/main.js"></script>
+            <script>
+                function pretrazi() {
 
+                    var input, filter, table, tr, i, td1, td2, td3, td4, txtValue1, txtValue2, txtValue3, txtValue4;
+                    input = document.getElementById("pretrazi");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+
+                    for (i = 0; i < tr.length; i++) {
+                        td1 = tr[i].getElementsByTagName("td")[1];
+                        td2 = tr[i].getElementsByTagName("td")[2];
+                        td3 = tr[i].getElementsByTagName("td")[3];
+                        td4 = tr[i].getElementsByTagName("td")[4];
+
+                        if (td1 || td2 || td3 || td4) {
+                            txtValue1 = td1.textContent || td1.innerText;
+                            txtValue2 = td2.textContent || td2.innerText;
+                            txtValue3 = td3.textContent || td3.innerText;
+                            txtValue4 = td4.textContent || td4.innerText;
+
+                            if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 ||
+                                txtValue3.toUpperCase().indexOf(filter) > -1 || txtValue4.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+            </script>
 
         </body>
 

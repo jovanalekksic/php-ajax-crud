@@ -29,11 +29,11 @@ require '../model/prijava.php';
 
 
 if (
-    isset($_POST['naziv']) && isset($_POST['autor'])
+    isset($_POST['prijava_id']) && isset($_POST['naziv']) && isset($_POST['autor'])
     && isset($_POST['drzava']) && isset($_POST['zanr']) && isset($_POST['datum']) && isset($_POST['idClana'])
 ) {
 
-    $status = Prijava::izmeniPrijavu($_POST['naziv'], $_POST['autor'], $_POST['drzava'], $_POST['zanr'], $_POST['datum'], $_POST['idClana'], $conn);
+    $status = Prijava::izmeniPrijavu($_POST['prijava_id'], $_POST['naziv'], $_POST['autor'], $_POST['drzava'], $_POST['zanr'], $_POST['datum'], $_POST['idClana'], $conn);
     if ($status) {
         echo 'Success';
     } else {

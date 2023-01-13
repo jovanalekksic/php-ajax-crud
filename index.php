@@ -50,7 +50,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 <body>
 
-    <h1 class="naslov">Welcome to the library of Magic!</h1>
+    <h1 class="naslov">Dobrodošli u biblioteku!</h1>
 
     <form method="POST" action="#">
         <div class="form-group">

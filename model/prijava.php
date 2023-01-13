@@ -65,12 +65,12 @@ class Prijava
     //     $q = "UPDATE prijave set naziv ='$this->naziv', autor='$this->autor',drzava='$this->drzava',zanr='$this->zanr',datum='$this->datum',idClana='$this->idClana'";
     //     return $conn->query($q);
     // }
-    public static function izmeniPrijavu($naziv, $autor, $drzava, $zanr, $datum, $idClana, mysqli $conn)
+    public static function izmeniPrijavu($prijava_id, $naziv, $autor, $drzava, $zanr, $datum, $idClana, mysqli $conn)
     {
 
         $query = "UPDATE prijave 
-                  SET naziv ='$naziv', autor='$autor', drzava='$drzava', zanr='$zanr', datum='$datum' 
-                  WHERE idClana = '$idClana' ";
+                  SET naziv ='$naziv', autor='$autor', drzava='$drzava', zanr='$zanr', datum='$datum', idClana='$idClana' 
+                  WHERE prijava_id = '$prijava_id' ";
         return $conn->query($query);
     }
 }
