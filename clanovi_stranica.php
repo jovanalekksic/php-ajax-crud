@@ -57,7 +57,7 @@
 
             <div class="newbook">
                 <button id="btn-dodaj-clana" class="btn btn-primary" data-toggle="modal" data-target="#modalDodajClana">Dodaj člana</button>
-                <input type="text" id="pretrazi" class="btn" placeholder="Pretraži" onkeyup="pretrazi()" style="margin-left: 70%;">
+                <input type="text" id="pretrazi" class="btn" placeholder="Pretraži" onkeyup="pretrazi()">
             </div>
 
 

@@ -61,7 +61,7 @@ if ($rezultat->num_rows == 0) {
 
         <div class="newbook">
             <button id="btnAdd" class="btn btn-primary" data-toggle="modal" data-target="#modaladd">Dodaj novu knjigu</button>
-            <input type="text" id="pretrazi" class="btn" placeholder="Pretraži" onkeyup="pretrazi()" style="margin-left: 66%;">
+            <input type="text" id="pretrazi" class="btn" placeholder="Pretraži" onkeyup="pretrazi()">
         </div>
 
 
